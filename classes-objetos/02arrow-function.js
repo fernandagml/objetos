@@ -1,3 +1,5 @@
+// Utilizada como call back -> para retornar algo
+
 const soma = (a,  b) => a + b;
 
 const saudacao = nome => console.log(`Olá, ${nome}!`);

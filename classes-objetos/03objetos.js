@@ -11,6 +11,7 @@ let quadrado03 = [{}]; // Array de objetos -> Mais comum
 // Forma Literal
 let quadrado1 = {
     lados: 4, // É uma propriedade do quadrado -> ele possui 4 lados
+    //Função descritiva
     area: function(lado){return lado * lado},
     perimetro: function(lado){return this.lados * lado}
 }; // uma função(area) dentro de um objeto se chama método.
