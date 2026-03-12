@@ -34,7 +34,7 @@ const compararEscolas = (e1, e2) => {
     else console.log(`Resultado: Ambas as unidades possuem a mesma quantidade de cursos.`);
 
     console.log(`Status: ${e1.cidade} (${e1.qntdCursos}) | ${e2.cidade} (${e2.qntdCursos})\n`);
-    
+
     //e1.qntdCursos > e2.qntdCursos? console.log(`Resultado: O SENAI ${e1.cidade} possui mais cursos.`):console.log(`Resultado: O SENAI ${e2.cidade} possui mais cursos.`);
     //e1.qntdCursos === e2.qntdCursos? console.log(`Resultado: Ambas as unidades possuem a mesma quantidade de cursos.`):console.log(`---`);
 };
