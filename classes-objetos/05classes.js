@@ -1,7 +1,7 @@
 // Classe é uma definição. Como um objeto deve ser.
 class Senai {
-    codigo;
-    cidade;
+    // codigo;
+    // cidade;
 
     // Dentro de uma classe não precisa da palavra function
     descreverEscola(){console.log(`O código ${this.codigo} pertence a Escola SENAI de ${this.cidade}.`)}
@@ -9,7 +9,7 @@ class Senai {
 
 
 // Instância é uma ocorrência (criando uma nova escola)
-const senaiArqa = new Senai();
+const senaiArqa = new Senai(); // -> senaiArqa{}
 // Incrementando o Objeto
 senaiArqa.codigo = 603;
 senaiArqa.cidade = 'Araraquara';
