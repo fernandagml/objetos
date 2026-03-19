@@ -9,35 +9,44 @@
     <script src="./sorteio.js" defer></script>
 </head>
 
-<body>
-    <section class="sorteio">
+<body class="sorteador">
 
-        <h1>Sorteador de Números Aleatórios 🎱</h1>
+    <header class="sorteador__header">
+        <h1 class="sorteador__header--title">Sorteador de Números Aleatórios 🎱</h1>
+    </header>
 
-        <div class="sorteio__inputs">
-            
-            <form class="sorteio__form">
-                <div class="sorteio__form--inputs">
-                    <div class="sorteio__form--input">
-                        <label for="min">Valor Mínimo</label>
-                        <input type="text" placeholder="Ex: 1" class="sorteio__input--min" name="min">
-                    </div>
-                    <div class="sorteio__form--input">
-                        <label for="max">Valor Máximo</label>
-                        <input type="text" placeholder="Ex: 15" class="sorteio__input--max" name="max">
-                    </div>
-                </div>
-                <div class="sorteio__acoes">
-                    <input class="sorteio__botao--sortear" type="submit" value="Sortear">
-                    <input class="sorteio__botao--reset" type="reset" value="Novo Sorteio">
-                </div>
-                <div class="sorteio__resultado">
-                    <p class="sorteio__resultado--texto"></p>
-                </div>
-            </form>
-        </div>
+    <main class="sorteador__main">
 
-    </section>
+        <section class="sorteador__main--intervalo intervalo">
+
+            <label class="intervalo--label" for="valor-minimo">Valor Mínimo:
+                <span class="intervalo__valor intervalo__valor--min"></span>
+            </label>
+            <input type="range" class="intervalo__slider intervalo__slider--min" name="valor-minimo" min="1" max="100" value="100">
+
+            <label class="intervalo--label" for="valor-maximo">Valor Máximo:
+                <span class="intervalo__valor intervalo__valor--max"></span>
+            </label>
+            <input type="range" class="intervalo__slider intervalo__slider--max" name="valor-maximo" min="1" max="100" value="100">
+
+        </section>
+
+        <section class="sorteador__main--area area">
+            <button class="area__button">Sortear</button>
+            <span class="area__numero">0</span>
+        </section>
+
+        <section class="sorteador__main--historico historico">
+            <h2 class="historico__title">Histórico</h2>
+            <ul class="historico__lista"></ul>
+        </section>
+
+    </main>
+
+    <footer class="sorteador__footer">
+        <button class="sorteador__footer--limpar">Limpar Histórico</button>
+    </footer>
+
 </body>
 
 </html>
