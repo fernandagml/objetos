@@ -55,5 +55,5 @@ const gerarNumeroAleatorioOtimizado = (min = 1, max = 15) => {
 
 
 // Código reduzido
-const numeroAleatorioReduzido = (min, max) => Math.floor(Math.random() * max) + min;
+const numeroAleatorioReduzido = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 console.log(numeroAleatorioReduzido(1, 15));

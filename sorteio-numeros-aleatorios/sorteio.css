@@ -1,0 +1,48 @@
+:root {
+    --cor-principal: #27AE60;
+    --cor-secundaria: #F79F1F ;
+    --cor-contraste: #192A56 ;
+}
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sorteio{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sorteio__form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sorteio__form--inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.sorteio__form--input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sorteio__acoes {
+    display: flex;
+    justify-content: space-between;
+}
