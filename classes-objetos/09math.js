@@ -17,8 +17,14 @@ const gerarNumeroAleatorio = () => {
 
     // Retorna o número aleatório.
     return numeroAleatorio;
-}
+};
 
 // Atribuindo a função a uma variável
 let numeroSorteado = gerarNumeroAleatorio();
 console.log(`Número Sorteado: ${numeroSorteado}`);
+
+
+// Código otimizado -> Professor
+const gerarNumeroAleatorioOtimizado = (min = 1, max = 15) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
