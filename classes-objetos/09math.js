@@ -1,6 +1,6 @@
 const gerarNumeroAleatorio = () => {
     // Math.random() gera um número entre 0 e 1 (exclusivo)
-    let numeroAletario = Math.random();
+    let numeroAleatorio = Math.random();
     console.log(`Sorteio: ${numeroAleatorio}`);
 
     // Multiplicamos por 15 para obter um número entre 0 e 14 (exclusivo)
@@ -19,6 +19,30 @@ const gerarNumeroAleatorio = () => {
     return numeroAleatorio;
 };
 
+
+// Função gerarNumeroAleatorio com parâmetro número
+const gerarNumeroAleatorioParametro = (num) => {
+    // Math.random() gera um número entre 0 e 1
+    let numeroAleatorio = Math.random();
+    console.log(`Sorteio: ${numeroAleatorio}`);
+
+    // Multiplicamos por 15 para obter um número entre 0 e 14
+    numeroAleatorio *= num;
+    console.log(`Multiplicar: ${numeroAleatorio}`);
+
+    // Math.floor() para arredondar para baixo para um número inteiro
+    numeroAleatorio = Math.floor(numeroAleatorio);
+    console.log(`Arredondar: ${numeroAleatorio}`);
+
+    // Somamos 1 para obter um número entre 1 e 15
+    numeroAleatorio += 1;
+    console.log(`Somar 1: ${numeroAleatorio}`);
+
+    // Retorna o número aleatório.
+    return numeroAleatorio;
+};
+
+
 // Atribuindo a função a uma variável
 let numeroSorteado = gerarNumeroAleatorio();
 console.log(`Número Sorteado: ${numeroSorteado}`);
@@ -31,5 +55,5 @@ const gerarNumeroAleatorioOtimizado = (min = 1, max = 15) => {
 
 
 // Código reduzido
-const numeroAleatorio = (min, max) => Math.floor(Math.random() * max) + min;
-console.log(numeroAleatorio(1, 10));
+const numeroAleatorioReduzido = (min, max) => Math.floor(Math.random() * max) + min;
+console.log(numeroAleatorioReduzido(1, 15));
