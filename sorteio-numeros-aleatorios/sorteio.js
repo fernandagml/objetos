@@ -1,3 +1,4 @@
+const quantidadeNumerosRecentes = 8
 const inputSliderMin = document.querySelector('.intervalo__slider--min');
 const inputSliderMax = document.querySelector('.intervalo__slider--max');
 
@@ -30,30 +31,63 @@ inputSliderMax.addEventListener('input', atualizarValorSlider);
 
 
 // Função para gear um número aleatório
-const numeroAleatorioReduzido = (min, max) => {
-    Math.floor(Math.random() * (max - min + 1)) + min;
+const gerarNumeroAleatorio = (min, max) => {
+    let num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return num;
 };
 
 
-const atualizarTexto = (elemento, valor) => {
+const atualizarTextoNumeroSorteado = (elemento, valor) => {
+    elemento.textContent = valor;
 };
 
 
-const validarNumero = () => {
-    
-    const min = inputSliderMin.value.trim();
-    const max = inputSliderMax.value.trim();   
-    
-    if (min === '' || max === '') {
+const criarItemHistorico = (numero) => {
+    const li = document.createElement('li');
+    li.textContent = numero;
 
-    }
+    // API
+    li.addEventListener('click', () => {
+        navigator.clipboard.writeText(numero);
+    });
 
-}
+    return li
+};
 
-btnSortear.addEventListener('click', )
 
-// Capturar os valores
-// Evento click no botão 
-// Validar os valores
-// Aparecer o número sorteado
-// Salvar o número sorteado
+const atualizarHistorico = (lista, item, limite) => {
+    // Prepend coloca o item na primeira linha da lista. (apend coloca em último).
+    lista.prepend(item);
+
+    if (lista.children.length > limite) {
+        lista.removeChild(lista.lastChild);
+    };
+};
+
+
+const limparHistorico = () => {
+    if(confirm('Deseja realmente limpar o histórico de sorteios?')) {
+        listaNumeros.textContent = '';
+        elementoNumero.textContent = '0';
+    };
+};
+
+
+btnSortear.addEventListener('click', () => {
+    const min = Number(inputSliderMin.value);
+    const max = Number(inputSliderMax.value);
+
+    if (min > max) {
+        mensagem.textContent = 'O valor mínimo deve ser menor que o valor máximo.';
+        return
+    };
+
+    mensagem.textContent = '';
+
+    const num = gerarNumeroAleatorio(min, max);
+    atualizarTextoNumeroSorteado(elementoNumero, num);
+    const item = criarItemHistorico(num);
+    atualizarHistorico(listaNumeros, item, quantidadeNumerosRecentes);
+})
+
+btnLimparHistorico.addEventListener('click', limparHistorico);
