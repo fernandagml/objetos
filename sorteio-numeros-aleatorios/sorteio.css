@@ -14,16 +14,15 @@
 }
 
 .sorteador {
-    background-color: var(--cor-fundo);
-    color: var(--cor-contraste);
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--cor-fundo);
+    color: var(--cor-contraste);
+    min-height: 100vh;
     padding: 50px;
 }
 
-/* Header */
 .sorteador__header {
     margin-bottom: 50px;
     text-align: center;
@@ -36,7 +35,6 @@
     padding-bottom: 10px;
 }
 
-/* Main Container */
 .sorteador__main {
     background: var(--branco);
     width: 100%;
@@ -46,7 +44,6 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* Section: Intervalo (Sliders) */
 .intervalo {
     display: flex;
     flex-direction: column;
@@ -80,15 +77,15 @@
     padding: 20px;
     background: #f8f9fa;
     border-radius: 15px;
-    margin: 50px;
+    margin: 50px 0 32px;
 }
 
 .area__button {
     background-color: var(--cor-principal);
     color: white;
     border: none;
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
+    padding: 20px 50px;
+    font-size: 20px;
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
@@ -106,21 +103,29 @@
 }
 
 .area__numero {
-    font-size: 4rem;
+    font-size: 65px;
     font-weight: 800;
     color: var(--cor-secundaria);
     text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
 }
 
-/* Section: Histórico */
+.area__mensagem {
+    font-size: 18px;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    color: #ce5555;
+}
+
 .historico {
     border-top: 1px solid #eee;
-    padding-top: 1rem;
+    padding-top: 20px;
 }
 
 .historico__title {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+    font-size: 18px;
+    margin-bottom: 20px;
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -130,7 +135,7 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 10px;
     max-height: 100px;
     overflow-y: auto;
 }
@@ -140,19 +145,18 @@
     color: white;
     padding: 5px 12px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 15px;
 }
 
-/* Footer */
 .sorteador__footer {
-    margin-top: 2rem;
+    margin-top: 30px;
 }
 
 .sorteador__footer--limpar {
     background: transparent;
     border: 2px solid var(--cor-secundaria);
     color: var(--cor-secundaria);
-    padding: 0.6rem 1.5rem;
+    padding: 10px 25px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
