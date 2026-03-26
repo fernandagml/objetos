@@ -1,0 +1,6 @@
+const qntdCaracteres = () => {
+  const qntdcaracteres = Number(sliderElement.value);
+  sizePassword.textContent = qntdcaracteres;
+};
+
+qntdCaracteres();

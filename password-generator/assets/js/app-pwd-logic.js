@@ -1,56 +1,82 @@
 /* Seleciona os elementos do DOM usando o método querySelector, que retorna o primeiro elemento 
 que corresponde ao seletor CSS especificado */
+const sliderElement = document.querySelector('.app-pwd__main--input-slider'); // Elemento do controle deslizante
+const buttonElement = document.querySelector('.app-pwd__main--input-button'); // Botão de gerar senha
+const clearButton = document.querySelector('.app-pwd__main--input-button-clear'); //Botão para limpar o histórico de senhas
+const sizePassword = document.querySelector('.app-pwd__main--input-size'); // Elemento que mostra o tamanho da senha
+const password = document.querySelector('.app-pwd__main--result-output'); // Elemento que exibe a senha gerada
+const containerPassword = document.querySelector('.app-pwd__main--result'); // Container da senha gerada
+const welcomeElement = document.querySelector('.app-pwd__header--welcome'); // Elemento de saudação
+const datetimeElement = document.querySelector('.app-pwd__header--datatime'); // Elemento de data e hora
 
 
-// Elemento do controle deslizante
-// Botão de gerar senha
-//Botão para limpar o histórico de senhas
-// Elemento que mostra o tamanho da senha
-// Elemento que exibe a senha gerada
-// Container da senha gerada
-// Elemento de saudação
-// Elemento de data e hora
-
-
-/* Objeto que contém os conjuntos de caracteres possíveis para a geração de senha
+/* Objeto que contém os conjuntos de caracteres possíveis para a geração de senha */
+const charsets = {
+  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWYZ',
+  lowercase: 'abcdefghijklmnopqrstuv',
+  numbers: '0123456789',
+  special: '!@#$%&*'
+};
 
 
 /* Variáveis para armazenar a senha atual e o histórico de senhas */
+let senha = '';
+let historico = []; // Array
 
 
-/* Função que retorna uma saudação baseada na hora atual do dia
-
-
-  /**
+/* Função que retorna uma saudação baseada na hora atual do dia*/
+const getSaudacao = () => {
+  const hora = new Date().getHours();
+   /**
    * Regras da saudação:
    * 00:00 - 11:59 -> Bom dia
    * 12:00 - 17:59 -> Boa tarde
    * 18:00 - 23:59 -> Boa noite
    */
-
+  if (hora < 12) return 'Bom Dia!';
+  if (hora < 18) return 'Boa Tarde!';
+  return 'Boa Noite!';
+};
 
 
 /* Função que formata a data e hora atual em um formato legível
 Utiliza vários métodos do objeto Date para obter os componentes da data */
+const formatarDataHora = () => {
 
-/** Cria um objeto com a data e hora atual */
+  /** Cria um objeto com a data e hora atual */
+  const horaAtual = new Date();
+
+  /** Array com os nomes dos dias da semana */
+  const diasSemana = [
+    'Domingo',
+    'Segunda-Feira',
+    'Terça-Feira',
+    'Quarta-Feira',
+    'Quinta-Feira',
+    'Sexta-Feira',
+    'Sábado'
+  ]
+
+  /** Obtém o dia da semana */
+  const diaSemana = diasSemana[horaAtual.getDay()];
+
+  /** Dados da data */
+  const dia = horaAtual.getDate().toString().padStart(2, '0');
+  const mes = (horaAtual.getMonth() + 1).toString.padStart(2, '0');
+  const ano = horaAtual.getFullYear();
+  
+  /* Hora como número (para lógica, se necessário no futuro)
+  * Aqui usamos apenas para formatação */
+  const hora = horaAtual.getHours.toString().padStart(2, '0');
+  const minuto = horaAtual.getMinutes.toString().padStart(2, '0');
+  const segundo = horaAtual.getSeconds.toString().padStart(2, '0');
+
+  /** Retorna apenas a data e hora (sem saudação) */
+  return `${diaSemana}, ${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
+}
 
 
-/** Array com os nomes dos dias da semana */
 
-/** Obtém o dia da semana */
-
-
-/** Dados da data */
-
-
-/**
- * Hora como número (para lógica, se necessário no futuro)
- * Aqui usamos apenas para formatação
- */
-
-
-/** Retorna apenas a data e hora (sem saudação) */
 
 
 
