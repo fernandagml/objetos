@@ -95,11 +95,6 @@ btnSortear.addEventListener('click', () => {
     const min = Number(inputSliderMin.value);
     const max = Number(inputSliderMax.value);
 
-    if (min = max) {
-        mensagem.textContent = 'Atenção! O valor mínimo deve ser menor que o valor máximo.';
-        return;
-    };
-
     mensagem.textContent = '';
 
     const num = gerarNumeroAleatorio(min, max);
