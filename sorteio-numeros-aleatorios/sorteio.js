@@ -21,13 +21,31 @@ const atualizarValorSlider = () => {
     document.querySelector('.intervalo__valor--max').textContent = max;
 };
 
+const validarIntervalo = () => {
+    const min = Number(inputSliderMin.value);
+    const max = Number(inputSliderMax.value);
+
+    if (min > max) {
+        inputSliderMin.value = max;
+        atualizarValorSlider();
+        mensagem.textContent = 'Atenção! O valor mínimo deve ser menor que o valor máximo.';
+    } else if (max < min) {
+        inputSliderMin.value = max;
+        atualizarValorSlider();
+        mensagem.textContent = 'Atenção! O valor mínimo deve ser menor que o valor máximo.';
+    } else {
+        atualizarValorSlider();
+        mensagem.textContent = ''
+    };
+};
+
 
 // Inicializar interface com os valores atuais
 atualizarValorSlider()
 
 // Evento para atualizar o valor em tempo real
-inputSliderMin.addEventListener('input', atualizarValorSlider);
-inputSliderMax.addEventListener('input', atualizarValorSlider);
+inputSliderMin.addEventListener('input', validarIntervalo);
+inputSliderMax.addEventListener('input', validarIntervalo);
 
 
 // Função para gear um número aleatório
@@ -77,9 +95,9 @@ btnSortear.addEventListener('click', () => {
     const min = Number(inputSliderMin.value);
     const max = Number(inputSliderMax.value);
 
-    if (min > max) {
-        mensagem.textContent = 'O valor mínimo deve ser menor que o valor máximo.';
-        return
+    if (min = max) {
+        mensagem.textContent = 'Atenção! O valor mínimo deve ser menor que o valor máximo.';
+        return;
     };
 
     mensagem.textContent = '';
