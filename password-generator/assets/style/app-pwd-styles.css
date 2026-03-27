@@ -1,47 +1,55 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, sans-serif;
+}
+
+:root {
+    --cor-principal: #d60000;
+    --cor-secundaria: #aa0000;
+    --branco: #fff;
+    --fundo-contraste: #eee;
+    --neutro: #333;
+    --cinza: #666;
+    --cinza-escuro: #555;
+    --cinza-claro: #ccc;
 }
 
 body.app-pwd {
-    background: linear-gradient(135deg, #d60000, #8b0000);
+    background: linear-gradient(to bottom, var(--cor-principal), var(--cor-secundaria));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    color: #333;
+    color: var(--neutro);
 }
 
-/* HEADER */
 .app-pwd__header {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-    color: #fff;
-    font-size: 14px;
+    color: var(--branco);
+    font-size: 18px;
 }
 
-/* MAIN */
 .app-pwd__main {
-    background: #fff;
+    background: var(--branco);
     width: 95%;
-    max-width: 500px;
+    max-width: 750px;
     margin: auto;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px 5px rgba(0,0,0,0.2);
     text-align: center;
+    font-size: 18px;
 }
 
-/* LOGO */
 .app-pwd__main--logo {
-    width: 120px;
+    width: 450px;
     margin-bottom: 20px;
 }
 
-/* INPUT AREA */
 .app-pwd__main--input {
     margin-bottom: 20px;
 }
@@ -52,62 +60,61 @@ body.app-pwd {
     font-weight: bold;
 }
 
-/* SLIDER */
 .app-pwd__main--input-slider {
     width: 100%;
     margin-bottom: 15px;
-    accent-color: #d60000;
+    accent-color: var(--cor-principal);
 }
 
-/* OPTIONS */
 .app-pwd__main--input-options {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
 .app-pwd__main--input-option {
     display: block;
-    margin: 5px 0;
     cursor: pointer;
 }
 
 .app-pwd__main--input-option-checkbox {
     margin-right: 8px;
-    accent-color: #d60000;
+    accent-color: var(--cor-principal);
 }
 
-/* BUTTONS */
 .app-pwd__main--input-container-button {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
 }
 
 .app-pwd__main--input-button {
-    background: #d60000;
-    color: #fff;
+    background: var(--cor-principal);
+    color: var(--branco);
     border: none;
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 16px;
 }
 
 .app-pwd__main--input-button:hover {
-    background: #a80000;
+    background: var(--cor-secundaria);
 }
 
 .app-pwd__main--input-button-clear {
-    background: #555;
+    background: var(--cinza-escuro);
 }
 
 .app-pwd__main--input-button-clear:hover {
-    background: #333;
+    background: var(--neutro);
 }
 
-/* RESULT */
 .app-pwd__main--result {
-    background: #f5f5f5;
+    background: var(--fundo-contraste);
     padding: 15px;
     border-radius: 10px;
     margin-top: 15px;
@@ -121,26 +128,25 @@ body.app-pwd {
 
 .app-pwd__main--result-output {
     display: block;
-    background: #fff;
+    background: var(--branco);
     padding: 10px;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cinza-claro);
 }
 
 .app-pwd__main--result-output:hover {
-    background: #eee;
+    background: var(--fundo-contraste);
 }
 
 .app-pwd__main--result-tooltip {
     font-size: 12px;
-    color: #666;
+    color: var(--cinza);
     margin-top: 5px;
     display: block;
 }
 
-/* HISTORY */
 .app-pwd__main--history {
     margin-top: 20px;
     text-align: left;
@@ -163,7 +169,6 @@ body.app-pwd {
     font-size: 14px;
 }
 
-/* HIDE CLASS */
 .hide {
     display: none;
 }
