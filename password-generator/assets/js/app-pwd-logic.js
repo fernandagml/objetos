@@ -21,18 +21,18 @@ const charsets = {
 
 /* Variáveis para armazenar a senha atual e o histórico de senhas */
 let senha = '';
-let historico = []; // Array
+let historicoSenhas = []; // Array
 
 
 /* Função que retorna uma saudação baseada na hora atual do dia*/
 const getSaudacao = () => {
   const hora = new Date().getHours();
-   /**
-   * Regras da saudação:
-   * 00:00 - 11:59 -> Bom dia
-   * 12:00 - 17:59 -> Boa tarde
-   * 18:00 - 23:59 -> Boa noite
-   */
+  /**
+  * Regras da saudação:
+  * 00:00 - 11:59 -> Bom dia
+  * 12:00 - 17:59 -> Boa tarde
+  * 18:00 - 23:59 -> Boa noite
+  */
   if (hora < 12) return 'Bom Dia!';
   if (hora < 18) return 'Boa Tarde!';
   return 'Boa Noite!';
@@ -64,7 +64,7 @@ const formatarDataHora = () => {
   const dia = horaAtual.getDate().toString().padStart(2, '0');
   const mes = (horaAtual.getMonth() + 1).toString().padStart(2, '0');
   const ano = horaAtual.getFullYear();
-  
+
   /* Hora como número (para lógica, se necessário no futuro)
   * Aqui usamos apenas para formatação */
   const hora = horaAtual.getHours().toString().padStart(2, '0');
@@ -99,62 +99,78 @@ sliderElement.addEventListener('input', (e) => {
 
 /* Função principal para gerar a senha */
 const generatePassword = () => {
-
-}
-
-// String que armazenará todos os caracteres possíveis para a senha
+  // String que armazenará todos os caracteres possíveis para a senha
+  let checkedSelected = '';
 
   /* Obter os checkboxes selecionados */
-
-
-
+  const uppercaseCheck = document.querySelector('.uppercase-check').checked;
+  const lowerCheck = document.querySelector('.uppercase-check').checked;
+  const numbersCheck = document.querySelector('.numbers-check').checked;
+  const specialCheck = document.querySelector('.special-check').checked;
 
   /* Construir o charset baseado nas opções selecionadas */
- 
+  if (uppercaseCheck) checkedSelected += charsets.uppercase;
+  if (lowerCheck) checkedSelected += charsets.lowercase;
+  if (numbersCheck) checkedSelected += charsets.numbers;
+  if (specialCheck) checkedSelected += charsets.special;
 
   /* Se nenhuma opção estiver selecionada, selecionar todas */
- 
+  if (!checkedSelected) {
+    checkedSelected = Object.values(charsets).join('');
+    document.querySelector('.uppercase-check').checked = true;
+    document.querySelector('.uppercase-check').checked = true;
+    document.querySelector('.numbers-check').checked = true;
+    document.querySelector('.special-check').checked = true;
+  }
 
   // Inicializa uma string vazia para armazenar a senha gerada
- 
-
+  let senhaGerada = '';
 
   /* Loop que itera pelo número de caracteres definido no slider
- Usa o operador de incremento (++) para aumentar o contador */
-
-  
+  Usa o operador de incremento (++) para aumentar o contador */
+  for (let i = 0; i < sliderElement.value; ++i) {
     /* Adiciona um caractere aleatório à senha:
     1. Math.random() gera um número decimal entre 0 e 1
     2. Multiplicado pelo comprimento do charset para obter um índice válido
     3. Math.floor() arredonda para baixo para obter um índice inteiro
     4. charAt() retorna o caractere na posição do índice calculado */
+    senhaGerada += checkedSelected.charAt(Math.floor(Math.random() * checkedSelected.length));
+  };
 
-  
+
   /* Remove a classe 'hide' para exibir o container da senha */
-  
+  containerPassword.classList.remove('hide');
 
   /* Insere a senha gerada no elemento HTML */
+  password.textContent = senhaGerada;
 
- 
   /*  Armazena a senha atual na variável global para uso posterior (ex: copiar) */
-  
+  novaSenha = senhaGerada;
+
   /* Gerenciamento do histórico de senhas:
   unshift() adiciona a nova senha no início do array */
- 
+  historicoSenhas.unshift(senhaGerada);
 
   /*  Limita o histórico a 3 senhas:
   Se o array tiver mais de 3 itens, pop() remove o último */
- 
+  if (historicoSenhas.length > 3) {
+    historicoSenhas.pop();
+  };
   /* Atualizar a lista de histórico na interface: */
- 
+  const historico = document.querySelector('.app-pwd__main--history');
+  if (historico) {
+
     /* Remover a classe 'hide' para exibir o histórico */
-    
+    historico.computedStyleMap3.display = 'block';
 
     /* Cria elementos <li> para cada senha no histórico:
     1. map() transforma cada senha em um elemento HTML
     2. join('') concatena todos os elementos em uma única string */
 
-  
+    historico.querySelector('.app-pwd__main--history-list').innerHTML = historicoSenhas.map(senha => `<li class="app-pwd__main--history-list-item>${senha}</li>`).join('');
+  };
+};
+
 
 /* Função para copiar a senha gerada para a área de transferência */
 const copyPassword = () => {
