@@ -12,7 +12,7 @@ const temas = {
         margin: '0',
         textShadow: '0 0 10px rgba(0, 255, 153, 0.5)'
     },
-    suadacao: {
+    saudacao: {
         fontSize: '24px',
         marginBottom: '10px',
         textTransform: 'uppercase',
@@ -38,7 +38,7 @@ aplicarEstilos = (elemento, estilo) => {
     Object.assign(elemento.style, estilo);
 };
 
-const atualizarPainel = () => {
+const saudacao = () => {
     const hora = new Date();
 
     const horaAtual = hora.getHours();
@@ -46,11 +46,24 @@ const atualizarPainel = () => {
     if (horaAtual < 12) saudacao = 'Bom Dia!';
     else if (horaAtual < 18) saudacao = 'Boa Tarde!';
 
-    const opcoes = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-
     elementoSaudacao.textContent = `Olá, ${saudacao}!`;
+};
+
+const relogio = () => {
+    const hora = new Date();
     elementoRelogio.textContent = hora.toLocaleTimeString('pt-BR');
+};
+
+const dataCompleta = () => {
+    const hora = new Date();
+    const opcoes = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     elementoDataCompleta.textContent = hora.toLocaleDateString('pt-BR', opcoes);
+}
+
+const atualizarPainel = () => {
+    saudacao();
+    relogio();
+    dataCompleta();
 };
 
 aplicarEstilos(document.body, temas.corpo);
