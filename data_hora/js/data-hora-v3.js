@@ -28,8 +28,17 @@ const temaDark = {
         opacity: '0.8'
     },
     button: {
-        padding: '5px 10px',
-        marginTop: '10px'
+        padding: '12px 24px',
+        marginTop: '25px',
+        cursor: 'pointer',
+        backgroundColor: 'transparent',
+        color: '#ff69b4',
+        border: '2px solid #ff69b4',
+        borderRadius: '30px',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        boxShadow: '0 0 10px rgba(255, 105, 180, 0.3)'
     }
 };
 
@@ -63,8 +72,17 @@ const temaLight = {
         opacity: '0.8'
     },
     button: {
-        padding: '5px 10px',
-        marginTop: '10px'
+        padding: '12px 24px',
+        marginTop: '10px',
+        cursor: 'pointer',
+        backgroundColor: '#000',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '30px',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
     }
 };
 
@@ -88,7 +106,7 @@ const atualizarPainel = () => {
     if (horaAtual < 12) saudacao = 'Bom Dia!';
     else if (horaAtual < 18) saudacao = 'Boa Tarde!';
 
-    const opcoes = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     elementoSaudacao.textContent = `Olá, ${saudacao}!`;
     elementoRelogio.textContent = hora.toLocaleTimeString('pt-BR');
@@ -97,21 +115,22 @@ const atualizarPainel = () => {
 
 const modoDark = () => {
     aplicarEstilos(document.body, temaDark.corpo),
-    aplicarEstilos(elementoSaudacao, temaDark.saudacao),
-    aplicarEstilos(elementoRelogio, temaDark.relogio),
-    aplicarEstilos(elementoDataCompleta, temaDark.data),
-    aplicarEstilos(buttonModoDark, temaDark.button)
+        aplicarEstilos(elementoSaudacao, temaDark.saudacao),
+        aplicarEstilos(elementoRelogio, temaDark.relogio),
+        aplicarEstilos(elementoDataCompleta, temaDark.data),
+        aplicarEstilos(buttonModoDark, temaDark.button)
 };
 
 const modoLight = () => {
     aplicarEstilos(document.body, temaLight.corpo),
-    aplicarEstilos(elementoSaudacao, temaLight.saudacao),
-    aplicarEstilos(elementoRelogio, temaLight.relogio),
-    aplicarEstilos(elementoDataCompleta, temaLight.data),
-    aplicarEstilos(buttonModoLight, temaLight.button)
+        aplicarEstilos(elementoSaudacao, temaLight.saudacao),
+        aplicarEstilos(elementoRelogio, temaLight.relogio),
+        aplicarEstilos(elementoDataCompleta, temaLight.data),
+        aplicarEstilos(buttonModoLight, temaLight.button)
 };
 
 modoLight();
+modoDark();
 
 buttonModoDark.addEventListener('click', modoDark);
 buttonModoLight.addEventListener('click', modoLight);
