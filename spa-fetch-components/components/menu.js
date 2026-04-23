@@ -1,29 +1,35 @@
-const criarMenu = (menu) => {
-    const botao = menu.querySelector('.menu__botao');
+export const iniciarMenu = () => {
+    const menus = document.querySelectorAll('[data-menu]');
+    console.log(menus)
 
-    const toggleMenu = () => {
-        menu.classList.toggle('active');
+    menus.forEach((menu) => {
+        const botao = menu.querySelector('.menu__botao');
 
-        const ativo = menu.classList.constains('active');
+        const toggleMenu = () => {
+            menu.classList.toggle('active');
 
-        botao.setAttribute('aria-expanded', ativo);
-        botao.setAttribute('aria-label', ativo ? 'Fechar Menu' : 'Abrir Menu');
-    };
+            const ativo = menu.classList.contains('active');
 
-    const fecharComEsc = (event) => {
-        const isEsc = event.key === 'Escape';
-        const ativo = menu.classList.constains('active');
+            botao.setAttribute('aria-expanded', ativo);
+            botao.setAttribute('aria-label', ativo ? 'Fechar Menu' : 'Abrir Menu');
+        };
 
-        if (isEsc && ativo) {
-            menu.classList.remove('active');
-            botao.setAttribute('aria-expanded', false);
-            botao.setAttribute('aria-label', 'Abrir Menu');
-            botao.focus();
-        }
-    };
+        const fecharComEsc = (event) => {
+            const isEsc = event.key === 'Escape';
+            const ativo = menu.classList.contains('active');
 
-    botao.addEventListener('click', toggleMenu);
-    document.addEventListener('keydown', fecharComEsc);
+            if (isEsc && ativo) {
+                menu.classList.remove('active');
+                botao.setAttribute('aria-expanded', false);
+                botao.setAttribute('aria-label', 'Abrir Menu');
+                botao.focus();
+            };
+        };
+
+        // Evento de clique
+        botao.addEventListener('pointerdown', toggleMenu);
+
+        // Evento global de teclado
+        document.addEventListener('keydown', fecharComEsc);
+    });
 };
-
-document.querySelectorAll('[data-menu').forEach((menu) => criarMenu(menu));
