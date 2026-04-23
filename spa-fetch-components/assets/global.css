@@ -1,34 +1,35 @@
-/** Reset básico para garantir consistência entre navegadores */
+/** Reset */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/** Estilo padrão de links */
+/** Variáveis */
+:root {
+  --cor-bg: #e7e7e7;
+  --cor-text: #001088;
+  --cor-primary: #000;
+  --cor-bg-hover: rgba(0, 0, 0, 0.05);
+}
+
+/** Links padrão */
 a {
-  color: black;
+  color: var(--cor-primary);
   text-decoration: none;
   font-family: sans-serif;
 }
 
-/** Feedback visual ao passar o mouse */
 a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--cor-bg-hover);
 }
 
-/** Estrutura do cabeçalho */
-.cabecalho {
-  height: 70px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #e7e7e7;
+/** Conteúdo SPA */
+[data-conteudo] {
+  padding: 20px;
 }
 
-/** Logo */
-.cabecalho__logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+.pagina p {
+  color: var(--cor-text);
+  font-size: 24px;
 }
