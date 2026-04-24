@@ -1,14 +1,48 @@
-let x = 5;
-let y = 'banana';
+// const anna = (num) => num;
+// let y = 'banana';
+// var num;
 
-try {
-    x = y + 1;
-} catch(erro) {
-    let text = `
-    <strong>Nome do erro:</strong> ${erro.name} <br />
-    <strong>Mensagem:</strong> ${erro.message} <br />
-    <strong>Stack: </strong><pre>${erro.stack}</pre>
-    `;
+// let result = "Not Active.";
+// let isActive = false;
+// console.log(result, isActive);
 
-    document.body.innerHTML = text
+// if (isActive !== true) {
+//     isActive = true;
+//     result = "Active!";
+//     console.log(result, isActive);
+// }
+
+// try {
+
+// } catch(erro) {
+//     let text = `
+//     <strong>Nome do erro:</strong> ${erro.name} <br />
+//     <strong>Mensagem:</strong> ${erro.message} <br />
+//     <strong>Stack: </strong><pre>${erro.stack}</pre>
+//     `;
+
+//     document.body.innerHTML = text
+// };
+
+const carregarComponente = async (caminho, container) => {
+    try {
+        const resposta = await fetch(caminho);
+
+        // Valida resposta
+        if (!resposta.ok) {
+            throw new Error('Erro ao carregar componente');
+        };
+
+        // Converte para texto
+        const html = await resposta.text();
+
+        // Injeta no DOM
+        container.innerHTML = html;
+
+    } catch (erro) {
+        console.error(erro);
+    };
 };
+
+const containerP = document.querySelector('.containerP');
+carregarComponente('./c-test.html', containerP);
