@@ -44,5 +44,10 @@ const carregarComponente = async (caminho, container) => {
     };
 };
 
+// RESOLUÇÃO IVO:
+// const url = './c-test.html';
+// const containerP = document.querySelector('#containerP');
+// carregarComponente(url, containerP);
+
 const containerP = document.querySelector('.containerP');
 carregarComponente('./c-test.html', containerP);
