@@ -24,27 +24,27 @@
 //     document.body.innerHTML = text
 // };
 
-const carregarComponente = async (caminho, container) => {
-    try {
-        const resposta = await fetch(caminho);
+// const carregarComponente = async (caminho, container) => {
+//     try {
+//         const resposta = await fetch(caminho);
 
-        // Valida resposta
-        if (!resposta.ok) {
-            throw new Error('Erro ao carregar componente');
-        };
+//         // Valida resposta
+//         if (!resposta.ok) {
+//             throw new Error('Erro ao carregar componente');
+//         };
 
-        // Converte para texto
-        const html = await resposta.text();
+//         // Converte para texto
+//         const html = await resposta.text();
 
-        // Injeta no DOM
-        container.innerHTML = html;
+//         // Injeta no DOM
+//         container.innerHTML = html;
 
-    } catch (erro) {
-        console.error(erro);
-    };
-};
-const containerP = document.querySelector('.containerP');
-carregarComponente('./c-test.html', containerP);
+//     } catch (erro) {
+//         console.error(erro);
+//     };
+// };
+// const containerP = document.querySelector('.containerP');
+// carregarComponente('./c-test.html', containerP);
 // RESOLUÇÃO IVO:
 // const url = './c-test.html';
 // const containerP = document.querySelector('#containerP');
@@ -52,47 +52,50 @@ carregarComponente('./c-test.html', containerP);
 
 
 // ERRO PERSONALIZADO:
-try {
-    let idade = -5;
+// try {
+//     let idade = -5;
 
-    if (idade < 0) {
-        let erro = new Error('Idade Inválida.');
-        erro.codigo = 1001;
-        erro.tipo = 'Validação';
+//     if (idade < 0) {
+//         let erro = new Error('Idade Inválida.');
+//         erro.codigo = 1001;
+//         erro.tipo = 'Validação';
 
-        throw erro;
+//         throw erro;
 
-        // Minha resolução:
-        // throw new Error('A idade deve ser maior que zero.');
-    };
+//         // Minha resolução:
+//         // throw new Error('A idade deve ser maior que zero.');
+//     };
 
-} catch (erro) {
-    let text = `
-    <strong>Nome do erro:</strong> ${erro.name} <br />
-    <strong>Mensagem:</strong> ${erro.message} <br />
-    <strong>Código:</strong> ${erro.codigo} <br />
-    <strong>Tipo:</strong> ${erro.tipo} <br />
-    <strong>Stack:</strong> <span>${erro.stack}</span>
-    `;
+// } catch (erro) {
+//     let text = `
+//     <strong>Nome do erro:</strong> ${erro.name} <br />
+//     <strong>Mensagem:</strong> ${erro.message} <br />
+//     <strong>Código:</strong> ${erro.codigo} <br />
+//     <strong>Tipo:</strong> ${erro.tipo} <br />
+//     <strong>Stack:</strong> <span>${erro.stack}</span>
+//     `;
 
-    document.body.innerHTML = text;
-};
+//     document.body.innerHTML = text;
+// };
+
 
 // FUNÇÃO GERADORA DE ERRO
-const erros = (erro_n, mensagem, codigo, tipo) => {
+const gerarErros = (mensagem, codigo, tipo) => {
+    let erro = new Error(mensagem);
+    erro.codigo = codigo;
+    erro.tipo = tipo;
 
-    if (erro_n < 0) {
-        let erro = new Error(mensagem);
-        erro.codigo = codigo;
-        erro.tipo = tipo;
-
-        throw erro;
-    };
+    return erro;
 };
 
 try {
 
-    erros(-5, 'Idade Inválida', 1001, 'Validação');
+    let exemplo = 100;
+    if (exemplo < 200) {
+        let erro = gerarErros('Salso Insuficiente', 60, 'Financeiro')
+        throw erro
+        // throw gerarErros('Salso Insuficiente', 60, 'Financeiro')
+    };
 
 } catch (erro) {
 
@@ -105,5 +108,7 @@ try {
     `;
 
     document.body.innerHTML = text;
+
+    console.log(erro)
 
 };
