@@ -36,17 +36,12 @@ async function buscarCepAsyncAwait() {
     try {
         let resposta = await fetch(url);
         if (!resposta.ok) {
-            console.log(resposta)
             throw new Error('Erro na Requisição.');
         };
         let dataObj = await resposta.json();
-        if (dataObj.erro) {
-            throw new Error('Cep inválido ou não encontrado.');
-        };
         console.log(dataObj);
     } catch (error) {
-        console.warn(error.message);
+        console.warn('Erro:', error.message);
     }
-
 };
 buttonAsyncAwait.addEventListener('click', buscarCepAsyncAwait)
