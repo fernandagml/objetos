@@ -142,20 +142,20 @@
 // fetch(url).then(resposta) => resposta.json().then(dados) => console.log(dados).catch(error) => console.warn(error);
 
 // 3- Com erro:
-// const url = 'https://viacep.com.br/ws/01001000/json/';
-// fetch(url)
-//     .then((resposta) => {
-//         if (!resposta.ok) {
-//             throw new Error('Erro na Requisição.');
-//         };
-//         return resposta.json();
-//     })
-//     .then((dados) => {
-//         if (dados.erro) {
-//             throw new Error('Cep inválido ou não encontrado.');
-//         };
-//         console.log(dados);
-//     })
-//     .catch((error) => {
-//         console.warn(error.message);
-//     });
+const url = 'https://viacep.com.br/ws/01001000/json/';
+fetch(url)
+    .then((resposta) => {
+        if (!resposta.ok) {
+            throw new Error('Erro na Requisição.');
+        };
+        return resposta.json();
+    })
+    .then((dados) => {
+        if (dados.erro) {
+            throw new Error('Cep inválido ou não encontrado.');
+        };
+        console.log(dados);
+    })
+    .catch((error) => {
+        console.warn(error.message);
+    });
